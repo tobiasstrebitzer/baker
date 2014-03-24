@@ -45,7 +45,7 @@
     BakerAPI *api;
     IssuesManager *issuesManager;
     NSMutableArray *notRecognisedTransactions;
-    __weak UIPopoverController *infoPopover;
+    UIPopoverController *infoPopover;
 
     #ifdef BAKER_NEWSSTAND
     PurchasesManager *purchasesManager;
