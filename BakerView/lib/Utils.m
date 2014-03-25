@@ -94,7 +94,7 @@
     static NSDateFormatter *dateFormat = nil;
     if (dateFormat == nil) {
         dateFormat = [[NSDateFormatter alloc] init];
-        NSLocale *enUSPOSIXLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease];
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
         [dateFormat setLocale:enUSPOSIXLocale];
         [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         [dateFormat setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
@@ -109,14 +109,13 @@
                                           cancelButtonTitle:buttonTitle
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 + (void)webView:(UIWebView *)webView dispatchHTMLEvent:(NSString *)event {
     [Utils webView:webView dispatchHTMLEvent:event withParams:[NSDictionary dictionary]];
 }
 + (void)webView:(UIWebView *)webView dispatchHTMLEvent:(NSString *)event withParams:(NSDictionary *)params {
-    __block NSMutableString *jsDispatchEvent = [NSMutableString stringWithFormat:
+    NSMutableString *jsDispatchEvent = [NSMutableString stringWithFormat:
                                                 @"var bakerDispatchedEvent = document.createEvent('Events');\
                                                 bakerDispatchedEvent.initEvent('%@', false, false);", event];
     [params enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
