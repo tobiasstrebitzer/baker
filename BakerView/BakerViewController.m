@@ -601,6 +601,8 @@
     webView.delegate = self;
 
     webView.mediaPlaybackRequiresUserAction = ![book.bakerMediaAutoplay boolValue];
+    // Allow HTML5 video autoplay on iPhone
+    webView.allowsInlineMediaPlayback = YES;
     webView.scalesPageToFit = [book.zoomable boolValue];
     BOOL verticalBounce = [book.bakerVerticalBounce boolValue];
 
